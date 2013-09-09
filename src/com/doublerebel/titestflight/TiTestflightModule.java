@@ -70,6 +70,14 @@ public class TiTestflightModule extends KrollModule
     }
 
     @Kroll.method
+    public void sendCrash(long timestamp, String stackTrace)
+    {
+        String threadName = (TiApplication.isUIThread()) ? "main" : "background";
+        Log.d(TAG, "sending crash to TestFlight from thread: " + threadName);
+        TestFlight.sendCrash(timestamp, stackTrace, threadName);
+    }
+
+    @Kroll.method
     public void endSession()
     {
         Log.d(TAG, "endSession called");
