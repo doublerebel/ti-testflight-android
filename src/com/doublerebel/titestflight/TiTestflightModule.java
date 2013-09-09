@@ -43,7 +43,7 @@ public class TiTestflightModule extends KrollModule
     @Kroll.method
     public void takeOff(String token)
     {
-        Log.d(TAG, "takeOff called");
+        Log.d(TAG, "takeOff called with token: " + token);
         TiApplication appContext = TiApplication.getInstance();
         TestFlight.takeOff(appContext, token);
     }
@@ -51,21 +51,21 @@ public class TiTestflightModule extends KrollModule
     @Kroll.method
     public void land()
     {
-        Log.d(TAG, "land called");
+        Log.d(TAG, "landing...");
         TestFlight.land();
     }
 
     @Kroll.method
     public void passCheckpoint(String checkpointName)
     {
-        Log.d(TAG, "passCheckpoint called");
+        Log.d(TAG, "passCheckpoint called for checkpoint: " + checkpointName);
         TestFlight.passCheckpoint(checkpointName);
     }
 
     @Kroll.method
     public void log(String msg)
     {
-        Log.d(TAG, "log called");
+        Log.d(TAG, "log called with message: " + msg);
         TestFlight.log(msg);
     }
 
