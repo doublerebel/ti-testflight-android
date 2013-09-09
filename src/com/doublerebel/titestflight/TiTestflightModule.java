@@ -69,6 +69,13 @@ public class TiTestflightModule extends KrollModule
         TestFlight.log(msg);
     }
 
+    @Kroll.method
+    public void endSession()
+    {
+        Log.d(TAG, "endSession called");
+        TestFlight.endSession();
+    }
+
     // Properties
     // @Kroll.getProperty
     // public String getExampleProp()
