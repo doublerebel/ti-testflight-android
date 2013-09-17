@@ -37,15 +37,13 @@ public class TiTestflightModule extends KrollModule
     {
         Log.d(TAG, "inside onAppCreate");
         // put module init code that needs to run when the application is created
-    }
-
-    // Methods
-    @Kroll.method
-    public void takeOff(String token)
-    {
-        Log.d(TAG, "takeOff called with token: " + token);
-        TiApplication appContext = TiApplication.getInstance();
-        TestFlight.takeOff(appContext, token);
+        String token = app.getAppProperties().getString("ti.testflight.apptoken", "false");
+        if (token == "false") {
+            Log.e(TAG, "Can't takeOff, can't find ti.testflight.apptoken in App.Properties");
+        } else {
+            Log.d(TAG, "takeOff called with token: " + token);
+            TestFlight.takeOff(app, token);
+        }
     }
 
     @Kroll.method
